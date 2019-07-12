@@ -1,38 +1,32 @@
 @import "../../../global/global.scss";
 
-.col-xs-6 {
-  margin: 0;
-  padding: 0;
-}
-.row {
-  margin: 0;
-  padding: 0;
-}
-.container  {
-  padding: 0;
-}
+// Registration Parent Component
 
-
-.buyerRegistration_container {
-  width: 90%;
+.registration__container {
+  width: 85%;
+  // height: 100vh;
+  // max-width: 1px;
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
+  // justify-content: center;
   background: white;
-  padding-top: 5%;
+  padding: 5% 0;
   margin: 0 auto;
 
-  .buyerRegistration_header {
-    
+  .registration__header {
+    display: flex;
+    padding-bottom: 10px;
+    width: 70%;
+    border-bottom: 2px solid $grey;
+    justify-content: space-between;
+
     h1 {
       font-size: 24px;
-      text-align: center;
-      margin-bottom: .5em;
     }
-    .languageBtn_container {
+    .registration__container__language--btn {
       display: flex;
-      justify-content: center;
+      justify-content: flex-end;
       
       button {
         font-size: 16px;
@@ -44,66 +38,255 @@
         margin-bottom: 1em;
       }
     }
-    p {
-      color: $fontGrey;
-      font-size: 16px;
-      text-align: center;
+  }
+}
+.registration__subText {
+  width: 70%;
+  color: $fontGrey;
+  font-size: 12px;
+  // text-align: center;
+}
+.registration__progress {
+  width: 70%;
+  border-top: 10px solid $grey;
+  padding: 10px 0;
+  margin: 3% auto 0;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  // display: flex;
+  // justify-content: space-between;
+  font-size: 12px;
+  font-weight: 600;
+
+  &__item--active {
+    color: #168cc9;
+
+    .progress__icon {
+      border: 1px solid $blue;
+      background: $blue;
+      color: white;
     }
   }
 }
+.progress__icon {
+  border: 1px solid $grey;
+  background: $grey;
+  padding: 3px 6px;
+  margin-right: 5px;
 
-// Buyer Registration Input Fields across all subcomponents
+  &--check {
+    background: $black;
+    border: 1px solid $black;
+    color: white;
+  }
+}
+
+
+// Registration Sub Components
+
+.registrationComponent__container {
+  width: 70%;
+  margin: 0 auto;
+  // padding-bottom: 1em;
+  background: #f9f9f9;
+}
+.registration__container--personalInfo {
+  display: grid;
+  padding: 0 10%;
+  grid-column-gap: 5%;
+  grid-template-areas: "firstName lastName"
+  "email email"
+  "password password"
+  "phone phone"
+  "btn btn";
+
+
+}
+.registration__container--address {
+  display: grid;
+  padding: 0 10%;
+  grid-column-gap: 5%;
+  grid-template-areas: "companyName permit"
+  "address address"
+  "unit zip"
+  "city state";
+}
+.registration__input {
+  display: flex;
+  flex-direction: column;
+  margin: .7em .5em;
+  font-size: 14px;
+  line-height: 1.7;
+
+  &--email {
+    grid-area: email;
+  }
+  &--password {
+    grid-area: password;
+  }
+  &--phone {
+    grid-area: phone !important;
+    width: 100% !important;
+  }
+  &--address {
+    grid-area: address;
+  }
+}
+.registration__container--checkbox {
+  width: 80%;
+  margin: 1em auto;
+}
+.registration__checkbox {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  // margin-top: 1em;
+  padding: 1em 0;
+  border-bottom: 1px solid #dfdfdf;
+}
+.checkbox__label {
+  font-size: 14px;
+}
+.registration__container--select {
+  display: flex;
+  justify-content: space-between;
+  padding: 15px 0;
+}
+.registration__content--select {
+  background: white;
+  font-size: 12px;
+  padding: .5em;
+  width: 45%;
+  text-align: center;
+  border: 2px solid $grey;
+  border-radius: 0;
+  -webkit-appearance: none;
+  background-position: right 50%;
+  background-repeat: no-repeat;
+  background-image: url('data:image/svg+xml;utf8,<?xml version="1.0" encoding="utf-8"?><!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd"><svg xmlns="http://www.w3.org/2000/svg" width="14" height="12" version="1"><path d="M4 8L0 4h8z"/></svg>');
+}
+.registration__content--input {
+  width: 45%;
+  border: 2px solid $grey;
+}
+.registration__container--verification {
+  padding: 0 10%;
+  font-size: 14px;
+
+  .service_agreement {
+    height: 100px;
+    overflow-y: scroll;
+    padding: 1em;
+    margin: 1em 0;
+    background: white;
+    border: .5px solid #dfdfdf;
+    width: 70%;
+  }
+  .serviceAgreement_checkbox {
+    margin-bottom: 2em;
+  }
+  .serviceAgreement_header {
+    font-size: 20px;
+    color: $black;
+    line-height: 1.2;
+    margin: 1em 0 1.5em;
+  }
+  .codeInput {
+    padding-top: 2em;
+    width: 400px !important;
+  }
+  .serviceAgreement_customerService {
+    padding: 1em 0 2em;
+    font-size: 12px;
+    line-height: 1;
+  }
+}
+
+
 .asterisk {
   color: #168cc9;
 }
-.buyerRegistration_subtitle {
+.registration__subtitle {
   width: 100%;
   background: $grey;
-  padding: 1em;
+  padding: 1em 10%;
   font-size: 20px;
 
+
+  &--verification {
+    display: flex;
+    align-items: center;
+  }
   p {
     font-size: 14px;
-    padding-top: 1em;
+    // padding-top: 1em;
   }
   .country {
     width: 50%;
     font-size: 14px;
   }
-}
-.buyerRegistration_inputField {
-  width: 100%;
-  padding: 0 1em;;
-  margin: 1em auto;
-  font-size: 14px;
-  color: $fontGrey;
-  line-height: 1.7;
 
-  input {
-    border: .5px solid #dfdfdf;
-    border-radius: 0;
-    box-shadow: none;
-    padding: 3px 0 3px 5px;;
+  &--personalInfo {
+    display: flex;
+    justify-content: space-between;
+
+    p {
+      text-align: end;
+    }
   }
- 
-  .full {
-    width: 100%;
+  &--address {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(2, 1fr);
+    grid-column-gap: 5%; 
+
+    .country__dropdown {
+      width: 100%;
+      grid-column: 2;
+      grid-row: 2;
+      font-size: 14px;
+      border-radius: 0;
+    }
   }
-  .left {
-    width: 47.5%;
-    margin-right: 2.5%;
-  }
-  .right {
-    width: 47.5%;
-    margin-left: 2.5%;
+  .registration__subtitle__item {
+    font-size: 16px;
+    width: fit-content;
+
+    &--black {
+      margin-right: 15px;
+    }
+    &--grey {
+      color: #cccccc;
+    }
+
+    &--bar {
+
+      &::before {
+        display: inline-block;
+        margin: 0 0px 3px 0;
+        height: 3px;
+        content: " ";
+        text-shadow: none;
+        background-color: #cccccc;
+        width: 50px;
+      }
+    }
   }
 }
 
-.buyerRegistration_btn_container {
+.registration__container--btn{
   background: $grey;
-  margin: 1em auto;
+  width: 100%;
+  padding: 1em 7%;
+  // padding: 0 1em;
+  margin: 1em auto 0;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
 
-
+  .serviceAgreement_btn {
+    // width: 60%;
+    background:$blue;
+    color: white;
+  }
   .btn {
     font-size: 14px;
     padding: .5em;
@@ -111,7 +294,7 @@
     border: 1px solid #a0a0a0;
   }
   .back {
-    width: 34%;
+    // width: 34%;
     margin-right: 1%;
     background: white;
     color: $black;
@@ -119,8 +302,9 @@
   .reset {
     background: white;
     color: $fontGrey;
-    width: 25%;
+    width: 80%;
     margin: 0 2.5%;
+    justify-self: center;
   }
   .next {
     background: #168cc9;
@@ -132,10 +316,18 @@
   font-size: 16px;
   padding: 1em 0;
 }
+.validation__rule {
+  font-size: 10px;
+  visibility: hidden;
 
-@media only screen and (min-width: 961px) {
-  .buyerRegistration_inputField {
-    width: 80%;
-    padding: 0;
+  &--active {
+    visibility: visible;
+    color: #168cc9;
   }
 }
+// @media only screen and (min-width: 961px) {
+//   .buyerRegistration_inputField {
+//     width: 80%;
+//     padding: 0;
+//   }
+// }

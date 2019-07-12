@@ -16,13 +16,12 @@ class NavSubCategory extends Component {
   }
   renderSubCategories() {
     let category = this.pushSubCategories(this.props.subItems);
-    console.log(this.props.subItems, 'hi')
     return category.map(subCategory => {
       return (
-        <ul onClick={()=> { this.props.history.push(`/category/${subCategory.parent}/${subCategory.name}`)}} className={"subCategory_name " + (subCategory.categories.length > 0  ? 'group' : 'single') }>
+        <ul onClick={()=> { this.props.history.push(`/category/${subCategory.parent}/${subCategory.name}`)}} className={"category__content__title" + (subCategory.categories.length > 0  ? '--group' : '') }>
           <ul key={subCategory.category_id}>{subCategory.name}
           {subCategory.categories.map(child => {
-            return <li key={child.category_id} className="subCategory_item">{child.name}</li>
+            return <li key={child.category_id} className="category__content__subContainer">{child.name}</li>
           })}
           </ul>
         </ul>
@@ -36,7 +35,7 @@ class NavSubCategory extends Component {
       subCat = category[i].categories.length;
     }
     return(
-      <div className={"subCategory_container " + (subCat > 0 ? 'groupContainer' : 'singleContainer')}>
+      <div className={"category__content__container" + (subCat > 0 ? '--group' : '')}>
        {this.renderSubCategories()}
       </div>
     )

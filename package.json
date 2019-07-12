@@ -9,7 +9,8 @@
     "setup:rest-server": "cd rest-server && npm start",
     "buildEnv": "node bin/buildEnv.js",
     "build": "cd client && npm build",
-    "mysql": "mysql -u root -p < rest-server/db/db.sql"
+    "mysql": "mysql -u root -p < rest-server/db/db.sql",
+    "test": "jest"
   },
   "repository": {
     "type": "git",
@@ -26,6 +27,10 @@
     "lodash": "^4.17.11"
   },
   "devDependencies": {
-    "babel-cli": "^6.26.0"
+    "babel-cli": "^6.26.0",
+    "enzyme": "^3.10.0",
+    "enzyme-adapter-react-16": "^1.14.0",
+    "jest": "^24.8.0",
+    "react-test-renderer": "^16.8.6"
   }
 }

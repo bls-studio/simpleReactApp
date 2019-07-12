@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import './navVendor.scss';
 
 // Icons
 import { Icon } from 'react-icons-kit';
@@ -37,10 +36,8 @@ export default class NavVendor extends Component {
   }
 
   componentDidMount() {
-    // console.log(this.state.letters, 'state')
     this.renderVendor();
   }
-
   renderVendor() {
     let alphabet, letters = [], chunk = 8, temp = [];
     for (let i = 0; i < 26; i++) {
@@ -56,69 +53,56 @@ export default class NavVendor extends Component {
     }
   }
   
-  matchVendor(e) {
-    
-    console.log(e.target.getAttribute("letter[i]"), 'yolo')
+  matchVendor(alphabet) {
+    // console.log(alphabet)
+    let vendorLetter;
+    data.map(vendor => {
+      vendorLetter = vendor.name.slice(0, 1);
+      vendorLetter === alphabet ?
+      this.setState({ vendor_id: [vendor.manufacturer_id]}, console.log('vendor matched!')) 
+      :
+      console.log('vendor doesnt exist')
+    })
   }
-  // targetVendor() {
-  //   console.log('targer acquired')
-  // }
-    // let alphabet = this.state.letters;
-    // for (let i = 0; i < alphabet.length; i++) {
 
-    // }
-    // let vendorLetter;
-    // data.map(vendor => {
-    //   vendorLetter = vendor.name.slice(0, 1);
-    //   for (let i = 0; i < alphabet.length; i++) {
-    //     if (vendorLetter === alphabet[i]) {
-    //       this.state.vendor_id.push(vendor.manufacturer_id)
-    //       // this.setState({vendor_id: [vendor.manufacturer_id]})
-    //       console.log(alphabet[i], vendorLetter, this.state.vendor_id)
-    //     }
-
-    //   }
-    //   // console.log(vendor.name.slice(0,1))
-    // })
-  
   getVendor() {
 
   }
 
   render() {
     return(
-      <div className="container" id="navVendor_container">
-        <h1 className="navVendor_title">Find Vendor</h1>
-        <div className="row navVendor_container">
-          <div className="col-xs-7 col-sm-7 col-md-7 navVendor_left"  >
-            <select name="" id="" className="navSelect"><option value="">Select Vendor</option></select>
+      <div className="navigation__container">
+        <h1 className="navigation__title--vendor">Find Vendor</h1>
+        <div className="navigation__content">
+          <div className="navigation__content__left--vendor">
+            <select name="" id="" className="navigation__content--select"><option value="">Select Vendor</option></select>
             <div >
               {
                 this.state.letters.map((letter, j) => {
-                  return <ul className="alphabet_container" key={j}>
+                  return <ul className="navigation__content--alphabet" key={j}>
                     {
                       letter.map((alphabet, i) => {
-                        return <li className="letters" key={letter[i]} onClick={this.matchVendor}>{alphabet}</li>
+                        return <li className="navigation__content--letters" key={letter[i]} onClick={() => this.matchVendor(alphabet)}>{alphabet}</li>
                       })
                     }</ul>
                 })
               }
             </div>
           </div>
-          <div className="col-xs-5 col-sm-5 col-md-5 navVendor_right">
-            <div className="navVendor_Image_container">
+          <div className="navigation__content__right">
+            <div className="navigation__container--image">
               {
                 images.map( (image, i ) => (
-                  <div key={i + image} className="col-xs-6 navVendor_image">
+                  <div key={i + image} className="col-xs-6 navigation__content--image">
                     <img className={`${i === 0 ? `image__left` : `image__right`}`} src={image} alt=""/>
                   </div>
                 ))
               }              
             </div>
-            <div className="row navVendor_description">
-              <div className="col-xs-6 nav_description">T12048</div>
-              <button className="col-xs-6 navShop">Shop Now</button>
-              <div className="col-xs-6 nav_description">Bluelemon</div>
+            <div className="navigation__description__container">
+              <div className="navigation__description navigation__description--itemCode">T12048</div>
+              <button className="navigation__description__btn">Shop Now</button>
+              <div className="navigation__description navigation__description--name">Bluelemon</div>
             </div>
           </div>
         </div>

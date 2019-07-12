@@ -20,55 +20,21 @@ class Navigation extends Component {
   constructor(props) {
     super(props);
 
-    this.listenScrollEvent = this.listenScrollEvent.bind(this);
-
-    this.state = {lettersFinal: [],
-      position: {
-        position: "relative",
-        top: null
-      }
-    }
-  }
-
-  
-  listenScrollEvent(e) {
-    if (window.scrollY > 70) {
-      this.setState({position: {position: "fixed", top: 0}
-    })
-    } else {
-      this.setState({position: {position: 'relative', top: null}})
-    }
-  }
-  componentDidMount() {
-    window.addEventListener('scroll', this.listenScrollEvent)
-  }
-
+    this.state = {lettersFinal: []}
+  }  
   render () {
     return (
       <div>
-        <div id="navbar-desktop" style={this.state.position}>
+        <div id="navbar-desktop">
           <ul className="navbar-item">
-            <Popup trigger={<li className="bm-item-list">Categories<Icon icon={ic_arrow_drop_down}/></li>} position="bottom center" className="navbar_tooltip">
-              {/* <NavCat /> */}
+            <Popup arrow={false}  offsetY={10}
+            trigger={<li className="bm-item-list">Categories<Icon icon={ic_arrow_drop_down}/></li>} position="bottom center" className="navbar_tooltip">
               <NavCategory />
             </Popup>
-            {/* <li className="bm-item-list" data-tip data-for='navCat' data-event='click focus'>Categories<Icon icon={ic_arrow_drop_down}/></li>
-              <ReactTooltip id='navCat' place="bottom" globalEventOff='click' type="light" aria-haspopup='true' 
-               effect="solid" border={true} className="navbar_tooltip"
-              clickable={true} scrollHide={false}>
-              </ReactTooltip> */}
-            <Popup trigger={<li className="bm-item-list">Vendors<Icon icon={ic_arrow_drop_down}/></li>} position="bottom center" className="navbar_tooltip">
+            <Popup trigger={<li className="bm-item-list">Vendors<Icon icon={ic_arrow_drop_down}/></li>} position="bottom center" className="navbar--vendor">
               <NavVendor />
             </Popup>
-            {/* <li className="bm-item-list" data-tip data-for="navVendor" data-event="click focus">
-              Vendors <Icon icon={ic_arrow_drop_down}/>
-              <ReactTooltip id='navVendor' place="bottom" globalEventOff='click' type="light" aria-haspopup='true' 
-               effect="solid" border={true} className="navbar_tooltip"
-              clickable={true} scrollHide={false}>
-                <NavVendor />
-              </ReactTooltip>
-            </li> */}
-         <Popup trigger={<li className="bm-item-list">Daily New<Icon icon={ic_arrow_drop_down}/></li>} position="bottom center" className="navbar_tooltip">
+            <Popup trigger={<li className="bm-item-list">Daily New<Icon icon={ic_arrow_drop_down}/></li>} position="bottom center" className="navbar_tooltip">
               <NavDailyNew />
             </Popup>
             <li onClick={() => {this.props.history.push("/bestSeller")}} className="bm-item-list">Best Seller</li>

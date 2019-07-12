@@ -1,56 +1,92 @@
 @import '../../../../global/global.scss';
 
 
-.category_container {
+.navigationCategory__container {
   display: flex;
   width: fit-content;
   min-width: 60%;
   font-size: 14px;
 }
-.category_title {
+.category__sidePanel__title {
   margin: 1em;
   font-weight: 500;
   text-transform: uppercase;
   display: flex;
-
+  align-items: center;
+  justify-content: space-between;
+  width: calc(100% - 2em);
+  
+  .arrow__right {
+    visibility: hidden;
+  }
+  &:hover {
+    color: $blue;
+    
+    .arrow__right {
+      visibility: visible;
+    }
+  }
 }
-.category_title:hover {
+.category__sidePanel__title--active {
   color: $blue;
+
+  .arrow__right {
+    visibility: visible;
+  }
 }
-.category_upper {
+.category__sidePanel {
   width: fit-content;
 }
-.subCategory_container {
+// .category_lower {
+//   width: 60%;
+// }
+.category__content__container {
   border-left: 2px solid $grey;
 }
-.subCategory_container.groupContainer {
+.category__content__container--group{
   border-left: 2px solid $grey;
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   grid-template-rows: repeat(2, 1fr);
 }
-.subCategory_name.group {
+.category__content__title--group {
   font-weight: 600;
   text-transform: uppercase;
   margin: 1em;
 }
-.subCategory_name.group:hover {
+.category__content__title--group:hover {
   color: $blue;
 }
-.subCategory_name.single {
+.category__content__title {
   text-transform: capitalize;
   color: $fontGrey;
   margin: 1em;
   font-weight: 600;
+
+  &:hover {
+    color: $blue;
+  }
 }
-.subCategory_name.single:hover {
-  color: $blue;
-}
-.subCategory_item {
+
+.category__content__subContainer {
   text-transform: capitalize;
   color: $fontGrey;
   margin: 1em 0;
+
+  &:hover {
+    color: $blue;
+  }
 }
-.subCategory_item:hover {
-  color: $blue;
+
+.navigationCategory__caret {
+  height: 10px;
+  width: 10px;
+  position: relative;
+  background: rgb(255, 255, 255);
+  transform: rotate(225deg);
+  margin: -5px;
+  z-index: -1;
+  box-shadow: rgba(0, 0, 0, 0.2) 1px 1px 1px;
+  top: -2%;
+  left: 50%;
 }

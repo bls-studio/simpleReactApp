@@ -1,36 +1,124 @@
 @import '../../../../global/global.scss';
 
-#vendorInfo {
+#tabInfo__container {
   display: flex;
-  // padding: 1em;
-
-  * {
-    // outline: 1px solid red;
-  }
 }
-.sideNav {
-  width: fit-content;
-
+.tabInfo__sidePanel {
+  width: 30%;
 }
-.infoCategories {
-  font-size: 12px;
-  font-weight: 600;
-  color: $fontGrey;
-  line-height: 1.5;
+.sidePanel__container {
   white-space: nowrap;
   margin: 1em;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: calc(100% - 2em);
+  text-transform: capitalize;
+  font-size: 12px;
+  font-weight: 600;
+  color: $black;
+  cursor: pointer;
 
+  .arrow__right {
+    visibility: hidden;
+  }
+
+  &:hover {
+    color: $blue;
+    .arrow__right {
+      visibility: visible;
+    }
+  }
+}
+.sidePanel__container--active {
+  color: $blue;
+  
+  .arrow__right {
+    visibility: visible;
+  }
+}
+
+.sidePanel__subheader_item {
+  color: $fontGrey;
+  padding-left: 1em;
+  font-weight: normal;
+  line-height: 2;
+  width: calc(100% - 1em);
+  cursor: pointer;
+  
+  &:before {
+    content: '+';
+    margin: 0 5px;
+  }
+}
+.sidePanel__subheader_item--active {
+  text-decoration: underline;
+}
+.tabInfo__content__container {
+  padding: 0 1em;
+  border-left: 2px solid $grey;
+}
+.tabInfo__content__container-format {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-bottom: 5px;
+  border-bottom: 2px solid $grey;
+}
+.tabInfo__content__subContainer {
+  overflow-y: scroll;
+  min-height: 200px;
+}
+.tabInfo__content-header {
+  font-size: 12px;
+  font-weight: 800;
+  color: $black;
+  text-transform: capitalize;
+}
+.tabInfo__btn-close {
+  margin: 2em 1em 1em;
+  float: right;
+  border-radius: 0;
+  background: $grey;
+  font-size: 12px;
+  font-weight: 600;
+  padding: 4px 16px;
+}
+.tabInfo__btn-x {
+  border: none;
+  float: right;
   &:hover {
     color: $blue;
   }
 }
 
-.sideNavContents {
-  width: 100%;
+// SideNav Components
+
+.content__container {
+  font-size: 12px;
+  color: $fontGrey;
+  line-height: 1.2;
+
+  &-grid {
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(2, 1fr);
+    width: fit-content;
+    grid-gap: .5em;
+  }
 }
-.sideNavSchedule {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  grid-template-rows: repeat(2, 1fr);
-  width: fit-content;
+
+.content__header {
+  color: $blue;
+  padding: 1em 0;
+  text-transform: uppercase;
+  white-space: nowrap;
 }
+.content__description {
+  padding: 1em 0;
+}
+.content__details * {
+  margin: .5em 0;
+}
+

@@ -111,7 +111,7 @@ body {
 }
 html, body {
   width: 100%;
-
+  // height: 100%;
   margin: 0;
   padding: 0px;
 	overflow-x: hidden; 
@@ -142,6 +142,7 @@ $fontGrey: #808080;
 $blue: #168cc9;
 $black: #333;
 
+@import url('https://fonts.googleapis.com/css?family=Montserrat');
 $monts: "Montserrat", sans-serif;
 .col-xs-12 {
   padding: 0;

@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import './navDailyNew.scss';
 import {withRouter} from "react-router-dom";
 
 const data = [
@@ -98,34 +97,34 @@ class NavDailyNew extends Component {
   renderCategories(category) {
     console.log(this.props, "this is props")
     return category.map(categories => {
-      return <li onClick={()=> {this.props.history.push(`/${'dailyNew'}/${categories.name}`)}} className="dailyNew_categories" key={categories.category_id}>{categories.name} <span className="item_count">(500)</span></li>
+      return <li onClick={()=> {this.props.history.push(`/${categories.name}/dailyNew`)}} className="navigation__sidePanel__title" key={categories.category_id}>{categories.name} <span className="navigation__itemCount">(500)</span></li>
     })
   }
 
   render() {
     return(
-      <div className="container" id="navDailyNew_container">
-        <h1 className="nav_title">NEW Items <span className="item_count">(1,500)</span></h1>
-        <div className="row navVendor_container">
-          <div className="col-xs-6 col-sm-6 col-md-6 navDailynew_left">
+      <div className="navigation__container">
+        <h1 className="navigation__title--daily">NEW Items <span className="navigation__itemCount">(1,500)</span></h1>
+        <div className="navigation__content">
+          <div className="navigation__content__left">
             <ul >
               {this.renderCategories(data)}
             </ul>
           </div>
-          <div className="col-xs-6 col-sm-6 col-md-6 navDailyNew_right">
-            <div className="navVendor_Image_container">
+          <div className="navigation__content__right">
+            <div className="navigation__container--image">
               {
                 images.map( (image, i ) => (
-                  <div key={i + image} className="col-xs-6 navVendor_image">
+                  <div key={i + image} className="navigation__content--image">
                     <img className={`${i === 0 ? `image__left` : `image__right`}`} src={image} alt=""/>
                   </div>
                 ))
               }              
             </div>
-            <div className="row navVendor_description">
-              <div className="col-xs-6 nav_description">T12048</div>
-              <button className="col-xs-6 navShop">Shop Now</button>
-              <div className="col-xs-6 nav_description">Bluelemon</div>
+            <div className="navigation__description__container">
+              <button className="navigation__description__btn">Shop Now</button>
+              <div className="navigation__description navigation__description--itemCode">T12048</div>
+              <div className="navigation__description navigation__description--name">Bluelemon</div>
             </div>
           </div>
         </div>

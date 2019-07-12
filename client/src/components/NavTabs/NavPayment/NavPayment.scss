@@ -1,0 +1,55 @@
+@import '../../../../global/global.scss';
+
+.NavPayment {
+  padding: 1em;
+  
+  * {
+    color: $fontGrey;
+  }
+}
+.tabPayment__container {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-rows: repeat(2, 1fr);
+  grid-gap: 0;
+  width: fit-content;
+  p {
+    display: flex;
+    white-space: nowrap;
+    align-items: center;
+  }
+}
+.payment__header {
+  font-weight: 600;
+  color: $fontGrey;
+  display: flex;
+  align-items: center;
+
+  span {
+    font-weight: normal;
+  }
+
+}
+.payment__item {
+  width: calc(100% - 2em);
+   * {
+     line-height: 2;
+   }
+}
+.payment__item-border__bottom {
+  border-bottom: 2px solid $grey;
+}
+.payment__item-flex {
+  display: flex;
+}
+.payment__icons {
+  display: flex;
+  width: fit-content;
+
+  * {
+    margin-right: 5px;
+  }
+}
+.tabPayment__button-close {
+  float: right;
+}

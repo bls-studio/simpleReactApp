@@ -252,7 +252,6 @@ class NavCategory extends Component {
     this.state = {
       selectedIds: [],
     };
-    
   }  
 
   handleSelectedId(selected, depthLevel) {
@@ -272,28 +271,35 @@ class NavCategory extends Component {
     categories.map(title => {
       title.categories.map(subCategories => {
       if((this.state.selectedIds[depthLevel] === subCategories.parent_id)) {
-        subCategories.parent = title.name
+        subCategories.parent = title.name;
         subCat.push(subCategories);
         }
       })
     })
-
     return subCat
   }
 
   renderCategories(categories, depthLevel = 0) {
     return categories.map(title => {
-      return <ul onClick={() => {this.props.history.push(`/category/${title.name}`)}} onMouseEnter={this.handleSelectedId(title.category_id, depthLevel)} className="category_title" key={title.category_id}>{title.name}</ul>
+      return <ul onClick={() => {this.props.history.push(`/category/${title.name}`)}} onMouseEnter={this.handleSelectedId(title.category_id, depthLevel)} 
+        className={"category__sidePanel__title category__sidePanel__title" + (title.category_id === this.state.selectedIds[depthLevel] ? "--active" : '')} key={title.category_id}
+        >
+        {title.name}
+        <div style={{width: 'fit-content', alignSelf: 'baseline'}}>
+          <Icon icon={ic_keyboard_arrow_right} size={24} className="arrow__right"/>
+        </div>
+      </ul>
     })
   }
 
   render() {
     return(
-      <div className="category_container">
-        <div className="category_upper">
+      <div className="navigationCategory__container">
+        <div className="category__sidePanel">
+          <div className="navigationCategory__caret"/>
           {this.renderCategories(data)}
         </div>
-        <div className="category_lower">
+        <div className="navigationCategory__content">
           <NavSubCategory subItems={this.pushCategories(data)}/>
         </div>
       </div>

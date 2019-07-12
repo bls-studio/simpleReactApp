@@ -1,0 +1,9 @@
+@import "../../../../global/global.scss";
+
+.vendorList__container {
+  padding: 1em;
+}
+.vendorList__searchBar__container {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+}
